@@ -128,7 +128,7 @@
 		
 	// Add the tab bar controller's current view as a subview of the window
     [window setFrame:[[UIScreen mainScreen] bounds]];
-    [window addSubview:tabBarController.view];
+    [window setRootViewController:tabBarController];
 	[window makeKeyAndVisible];	
 }
 
@@ -136,8 +136,8 @@
 - (void)initUniqueIDHash
 {
 	unsigned char result[CC_MD5_DIGEST_LENGTH];
-	const char * uniqueIDStr = [[UIDevice currentDevice].uniqueIdentifier UTF8String];
-	CC_MD5(uniqueIDStr, strlen(uniqueIDStr), result);
+	const NSString *uniqueIDStr = [[[UIDevice currentDevice] identifierForVendor] UUIDString];;
+	CC_MD5(uniqueIDStr, uniqueIDStr.length, result);
 	NSString *uniqueID = [NSString stringWithFormat:@"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
 						  result[0], result[1], result[2], result[3],
 						  result[4], result[5], result[6], result[7],
@@ -145,7 +145,7 @@
 						  result[12], result[13], result[14], result[15]
 						  ];
 	
-	NSLog(@"uniqueID: %@", [UIDevice currentDevice].uniqueIdentifier);	
+	NSLog(@"uniqueID: %@", uniqueIDStr);
 	NSLog(@"Hashed uniqueID: %@", uniqueID);
 	self.uniqueIDHash = uniqueID; // save for later.
 }
