@@ -34,7 +34,7 @@
 
 @implementation CustomPickerDataSource
 
-@synthesize customPickerArray, parent;
+@synthesize myImageArray,myTitleArray, parent;
 
 - (id)init
 {
@@ -43,7 +43,8 @@
 	if (self)
 	{
 		// create the data source for this custom picker
-		NSMutableArray *viewArray = [[NSMutableArray alloc] init];
+		NSMutableArray *imageArray = [[NSMutableArray alloc] init];
+        NSMutableArray *titleArray = [[NSMutableArray alloc] init];
 
 		/*
 		 * Commute
@@ -55,65 +56,51 @@
 		 * Errand
 		 * Other
 		 */
-		
-		CustomView *view;
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Commute";
-		view.image = [UIImage imageNamed:kTripPurposeCommuteIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"School";
-		view.image = [UIImage imageNamed:kTripPurposeSchoolIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Work-Related";
-		view.image = [UIImage imageNamed:kTripPurposeWorkIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Exercise";
-		view.image = [UIImage imageNamed:kTripPurposeExerciseIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Social";
-		view.image = [UIImage imageNamed:kTripPurposeSocialIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Shopping";
-		view.image = [UIImage imageNamed:kTripPurposeShoppingIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Errand";
-		view.image = [UIImage imageNamed:kTripPurposeErrandIcon];
-		[viewArray addObject:view];
-		[view release];
-		
-		view = [[CustomView alloc] initWithFrame:CGRectZero];
-		view.title = @"Other";
-		view.image = [UIImage imageNamed:kTripPurposeOtherIcon];
-		[viewArray addObject:view];
-		[view release];
+        
+        [titleArray addObject:@"Commute"];
+		[imageArray addObject:kTripPurposeCommuteIcon];
+       
+        
+        
+        [titleArray addObject:@"School"];
+        [imageArray addObject:kTripPurposeSchoolIcon];
+   
 
-		self.customPickerArray = viewArray;
-		[viewArray release];
+        
+        [titleArray addObject:@"Work-Related"];
+        [imageArray addObject:kTripPurposeWorkIcon];
+        
+        
+        [titleArray addObject:@"Exercise"];
+        [imageArray addObject:kTripPurposeExerciseIcon];
+        
+        [titleArray addObject:@"Social"];
+        [imageArray addObject:kTripPurposeSocialIcon];
+        
+        
+        [titleArray addObject:@"Shopping"];
+        [imageArray addObject:kTripPurposeShoppingIcon];
+        
+
+        
+        [titleArray addObject:@"Errand"];
+        [imageArray addObject:kTripPurposeErrandIcon];
+        
+        [titleArray addObject:@"Other"];
+        [imageArray addObject:kTripPurposeOtherIcon];
+        
+		self.myImageArray = imageArray;
+        self.myTitleArray = titleArray;
+		[imageArray release];
+        [titleArray release];
 	}
 	return self;
 }
 
 - (void)dealloc
 {
-	[customPickerArray release];
+	[myImageArray release];
+    [myTitleArray release];
 	[super dealloc];
 }
 
@@ -133,7 +120,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-	return [customPickerArray count];
+	return [myTitleArray count];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -149,7 +136,19 @@
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row
 		  forComponent:(NSInteger)component reusingView:(UIView *)view
 {
-	return [customPickerArray objectAtIndex:row];
+    UITableView *pickerCustomView = [UITableView new];
+
+    UIImageView *myImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[myImageArray objectAtIndex:row]]];
+    [pickerCustomView addSubview:myImageView];
+    [myImageView release];
+
+    double width = [[myImageView image] size].width;
+    NSString * text = [myTitleArray objectAtIndex:row];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width, 0, 300, 30)];
+    label.text=text;
+    [pickerCustomView addSubview:label];
+    
+    return pickerCustomView;
 }
 
 

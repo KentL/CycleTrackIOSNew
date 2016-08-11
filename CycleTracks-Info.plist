@@ -35,6 +35,11 @@
 	<string>2.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>UIBackgroundModes</key>
@@ -50,5 +55,13 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackTranslucent</string>
+    
+    <!--  Request for location  -->
+    <key>NSLocationUsageDescription</key>
+    <string>I need location</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>I need location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>I need location</string>
 </dict>
 </plist>

@@ -70,7 +70,9 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.delegate = self;
-	
+	[locationManager requestWhenInUseAuthorization];
+    [locationManager requestAlwaysAuthorization];
+
     return locationManager;
 }
 
@@ -251,7 +253,7 @@
 		if ( fetchResults != nil )
 		{
 			User *user = (User*)[fetchResults objectAtIndex:0];
-			if (user			!= nil &&
+			if ( user			!= nil &&
 				(user.age		!= nil ||
 				 user.gender	!= nil ||
 				 user.email		!= nil ||

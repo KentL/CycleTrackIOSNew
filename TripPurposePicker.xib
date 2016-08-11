@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PickerViewController">
             <connections>
+                <outlet property="customPickerView" destination="3QT-aF-ALF" id="8AK-7w-rJb"/>
                 <outlet property="view" destination="1" id="7"/>
             </connections>
         </placeholder>
@@ -50,8 +51,12 @@
                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <pickerView contentMode="scaleToFill" id="3QT-aF-ALF">
+                    <rect key="frame" x="0.0" y="81" width="320" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </pickerView>
             </subviews>
-            <color key="backgroundColor" red="0.15686274510000001" green="0.1647058824" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

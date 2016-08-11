@@ -39,32 +39,32 @@
 
 
 // return the picker frame based on its size
-- (CGRect)pickerFrameWithSize:(CGSize)size
-{
-	
-	// layout at bottom of page
-	/*
-	CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-	CGRect pickerRect = CGRectMake(	0.0,
-									screenRect.size.height - 84.0 - size.height,
-									size.width,
-									size.height);
-	 */
-	
-	// layout at top of page
-	//CGRect pickerRect = CGRectMake(	0.0, 0.0, size.width, size.height );	
-	
-	// layout at top of page, leaving room for translucent nav bar
-	//CGRect pickerRect = CGRectMake(	0.0, 43.0, size.width, size.height );	
-	CGRect pickerRect = CGRectMake(	0.0, 78.0, size.width, size.height );	
-	return pickerRect;
-}
+//- (CGRect)pickerFrameWithSize:(CGSize)size
+//{
+//	
+//	// layout at bottom of page
+//	/*
+//	CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+//	CGRect pickerRect = CGRectMake(	0.0,
+//									screenRect.size.height - 84.0 - size.height,
+//									size.width,
+//									size.height);
+//	 */
+//	
+//	// layout at top of page
+//	//CGRect pickerRect = CGRectMake(	0.0, 0.0, size.width, size.height );	
+//	
+//	// layout at top of page, leaving room for translucent nav bar
+//	//CGRect pickerRect = CGRectMake(	0.0, 43.0, size.width, size.height );	
+//	CGRect pickerRect = CGRectMake(	0.0, 78.0, size.width, size.height );	
+//	return pickerRect;
+//}
 
 
 - (void)createCustomPicker
 {
-	customPickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
-	customPickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	//customPickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
+	//customPickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	
 	// setup the data source and delegate for this picker
 	customPickerDataSource = [[CustomPickerDataSource alloc] init];
@@ -77,14 +77,14 @@
 	// you just need to set the correct origin in your view.
 	//
 	// position the picker at the bottom
-	CGSize pickerSize = [customPickerView sizeThatFits:CGSizeZero];
-	customPickerView.frame = [self pickerFrameWithSize:pickerSize];
+	//CGSize pickerSize = [customPickerView sizeThatFits:CGSizeZero];
+	//customPickerView.frame = [self pickerFrameWithSize:pickerSize];
 	
-	customPickerView.showsSelectionIndicator = YES;
+	//customPickerView.showsSelectionIndicator = YES;
 	
 	// add this picker to our view controller, initially hidden
 	//customPickerView.hidden = YES;
-	[self.view addSubview:customPickerView];
+	//[self.view addSubview:customPickerView];
 }
 
 
@@ -107,8 +107,7 @@
 	if (self = [super initWithNibName:nibName bundle:nibBundle])
 	{
 		//NSLog(@"PickerViewController init");		
-		[self createCustomPicker];
-		
+				
 		// picker defaults to top-most item => update the description
 		[self pickerView:customPickerView didSelectRow:0 inComponent:0];
 	}
@@ -116,27 +115,13 @@
 }
 
 
-- (id)initWithPurpose:(NSInteger)index
-{
-	if (self = [self init])
-	{
-		//NSLog(@"PickerViewController initWithPurpose: %d", index);
-		
-		// update the picker
-		[customPickerView selectRow:index inComponent:0 animated:YES];
-		
-		// update the description
-		[self pickerView:customPickerView didSelectRow:index inComponent:0];
-	}
-	return self;
-}
-
 
 - (void)viewDidLoad
 {		
 	[super viewDidLoad];
 	
 	self.title = NSLocalizedString(@"Trip Purpose", @"");
+    [self createCustomPicker];
 
 	//self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	// self.view.backgroundColor = [[UIColor alloc] initWithRed:40. green:42. blue:57. alpha:1. ];
@@ -164,8 +149,8 @@
 //
 - (void)viewDidUnload
 {
-	[super viewDidUnload];
-	self.customPickerView = nil;
+    [self setCustomPickerView:nil];
+    [super viewDidUnload];
 	self.customPickerDataSource = nil;
 }
 
@@ -175,6 +160,7 @@
 	[customPickerDataSource release];
 	[customPickerView release];
 	
+    [UIPickerView release];
 	[super dealloc];
 }
 

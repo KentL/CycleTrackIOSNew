@@ -36,20 +36,22 @@
 @interface PickerViewController : UIViewController <UIPickerViewDelegate>
 {
 	id <TripPurposeDelegate> delegate;
-	UIPickerView			*customPickerView;
+	//UIPickerView			*customPickerView;
 	CustomPickerDataSource	*customPickerDataSource;
 	
 	UITextView				*description;
 }
 
 
+@property (retain, nonatomic) IBOutlet UIPickerView *customPickerView;
+
 @property (nonatomic, retain) id <TripPurposeDelegate> delegate;
-@property (nonatomic, retain) IBOutlet UIPickerView *customPickerView;
+//@property (nonatomic, retain) IBOutlet UIPickerView *customPickerView;
 @property (nonatomic, retain) CustomPickerDataSource *customPickerDataSource;
 
 @property (nonatomic, retain) UITextView *description;
 
-- (id)initWithPurpose:(NSInteger)index;
+//- (id)initWithPurpose:(NSInteger)index;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;

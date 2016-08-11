@@ -41,11 +41,13 @@
 
 @interface CustomPickerDataSource : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
 {
-	NSArray	*customPickerArray;
+	NSArray	*myImageArray;
 	id<UIPickerViewDelegate> parent;
+    NSArray *myTitleArray;
 }
 
-@property (nonatomic, retain) NSArray *customPickerArray;
+@property (nonatomic, retain) NSArray *myImageArray;
+@property (nonatomic, retain) NSArray *myTitleArray;
 @property (nonatomic, retain) id<UIPickerViewDelegate> parent;
 
 @end
