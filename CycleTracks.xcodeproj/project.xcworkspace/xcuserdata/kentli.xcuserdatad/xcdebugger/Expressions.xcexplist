@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[CustomPickerDataSource pickerView:viewForRow:forComponent:reusingView:]:CustomPickerDataSource.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "myView.bounds.size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SavedTripsViewController _recalculateDistanceForSelectedTripMap]:SavedTripsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[error localizedDescription]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
