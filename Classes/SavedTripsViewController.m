@@ -814,16 +814,7 @@
 		case 303:
 		{
 			NSLog(@"unSyncedTrips didDismissWithButtonIndex: %d", buttonIndex);
-			switch (buttonIndex) {
-				case 0:
-					// Nevermind
-					[self displaySelectedTripMap];
-					break;
-				case 1:
-				default:
-					// Upload Now
-					break;
-			}
+			// Just tell user there are trips unsynced, let user choose which one to upload
 		}
 			break;
 		default:

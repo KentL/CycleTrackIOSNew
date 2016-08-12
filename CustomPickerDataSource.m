@@ -139,15 +139,19 @@
     UITableView *pickerCustomView = [UITableView new];
 
     UIImageView *myImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[myImageArray objectAtIndex:row]]];
-    [pickerCustomView addSubview:myImageView];
-    [myImageView release];
-
     double width = [[myImageView image] size].width;
-    NSString * text = [myTitleArray objectAtIndex:row];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width, 0, 300, 30)];
-    label.text=text;
-    [pickerCustomView addSubview:label];
+    double height = [[myImageView image] size].height;
+    myImageView.frame=CGRectMake(5, 5, width, height);
+
     
+    NSString * text = [myTitleArray objectAtIndex:row];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width+20, 5, 300, 30)];
+    label.text=text;
+    
+    [pickerCustomView addSubview:myImageView];
+    [pickerCustomView addSubview:label];
+    [label release];
+    [myImageView release];
     return pickerCustomView;
 }
 
