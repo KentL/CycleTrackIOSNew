@@ -18,5 +18,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "-[TripManager alertView:didDismissWithButtonIndex:]:TripManager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "alertView == tripNotes">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

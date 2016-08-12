@@ -158,7 +158,7 @@
 
 - (void)createTripNotesText
 {
-	tripNotesText = [[UITextView alloc] initWithFrame:CGRectMake( 12.0, 50.0, 260.0, 65.0 )];
+	tripNotesText = [[UITextView alloc] initWithFrame:CGRectMake( 0, 0, 260.0, 65.0 )];
 	tripNotesText.delegate = self;
 	tripNotesText.enablesReturnKeyAutomatically = NO;
 	tripNotesText.font = [UIFont fontWithName:@"Arial" size:16];
@@ -757,9 +757,10 @@
 										  delegate:self
 								 cancelButtonTitle:@"Skip"
 								 otherButtonTitles:@"OK", nil];
+    tripNotes.alertViewStyle = UIAlertViewStylePlainTextInput;
 
-	[self createTripNotesText];
-	[tripNotes addSubview:tripNotesText];
+//	[self createTripNotesText];
+//	[tripNotes addSubview:tripNotesText];
 	[tripNotes show];
 	[tripNotes release];
 }
@@ -778,11 +779,16 @@
 		// save trip notes
 		if ( buttonIndex == 1 )
 		{
-			if ( [tripNotesText.text compare:kTripNotesPlaceholder] != NSOrderedSame )
-			{
-				NSLog(@"saving trip notes: %@", tripNotesText.text);
-				[self saveNotes:tripNotesText.text];
-			}
+            NSString *note=[tripNotes textFieldAtIndex:0].text;
+            NSLog(@"saving trip notes: %@",note);
+            [self saveNotes:note];
+//			if ( [note compare:kTripNotesPlaceholder] != NSOrderedSame )
+//			{
+//				NSLog(@"saving trip notes: %@", tripNotesText.text);
+//				[self saveNotes:tripNotesText.text];
+                
+            
+//            }
 		}
 		
 		// present UIAlertView "Saving..."
